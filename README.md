@@ -1,7 +1,8 @@
 ## Author
 #### Melie Lewis, Ph.D.
-[LinkedIn](www.linkedin.com/in/melie-lewis-9815a655)
-melielewis@gmail.com
+- [LinkedIn](www.linkedin.com/in/melie-lewis-9815a655)
+- melielewis@gmail.com
+- [Research & stuff](https://melielewis.github.io/malo/)
 
 ## Data Sources:
 - [Pro Sports Transactions](https://www.prosportstransactions.com)
