@@ -1,7 +1,7 @@
 if(!require("pacman")){install.packages("pacman")}
 pacman::p_load(tidyverse, spacyr, tidymodels, 
-               textrecipes, finetune, httr, rvest)
-
+               textrecipes, finetune, tidytext)
+# note - model and results already saved in RData file
 load("~/bball.RData")
 set.seed(9302025)
 protected_assets = protected_assets %>%
@@ -48,13 +48,5 @@ final = finalize_workflow(words,
 test_fit = last_fit(final, df_split, metrics = metric_set(roc_auc, accuracy, sens, spec))
 test_fit %>% collect_metrics()
 last_fit = extract_workflow(test_fit)
-tidy(last_fit) %>%
-  slice_max(abs(estimate), n = 20) %>%
-  mutate(term = str_remove_all(term, "tfidf_desc2"),
-         term = fct_reorder(term, abs(estimate))) %>%
-  ggplot(aes(x = abs(estimate), y = term, fill = estimate > 0)) +
-  geom_col() + 
-  scale_x_continuous(expand = c(0,0)) + 
-  scale_fill_discrete(labels = c("Less effective", "More effective"))
 
-save.image("~/bball.RData")
+#save.image("~/bball.RData") 
